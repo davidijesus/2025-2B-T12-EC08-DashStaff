@@ -1,6 +1,9 @@
 import inteliLogo from "@/assets/inteli-logo.png";
 
-const DashboardHeader = () => {
+interface DashboardHeaderProps {
+  title?: string;
+}
+const DashboardHeader = ({ title = "Acompanhamento Geral" }: DashboardHeaderProps) => {
   return (
     <header className="bg-[#2E2640] px-8 py-6">
       <div className="max-w-7xl mx-auto">
@@ -10,7 +13,7 @@ const DashboardHeader = () => {
               Última atualização às 18h02 de 12/11/2025
             </span>
             <h1 className="text-3xl font-bold text-primary-foreground">
-              Acompanhamento Geral
+              {title}
             </h1>
           </div>
           <img src={inteliLogo} alt="Inteli" className="h-8" />
