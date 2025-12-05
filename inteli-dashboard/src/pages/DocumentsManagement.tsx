@@ -1,6 +1,6 @@
 import { useState } from "react";
-import DashboardHeader from "@/components/dashboard/DashboardHeader";
-import FilterBar from "@/components/dashboard/FilterBar";
+import AppHeader from "@/components/AppHeader";
+import DocumentsHeader from "@/components/documents-management/DocumentsHeader";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -44,10 +44,10 @@ const DocumentsManagement = () => {
     }
   };
 
-  return (
+  return ( 
     <div className="h-screen bg-background flex flex-col overflow-hidden">
-      <DashboardHeader title="Documentos" />
-      <FilterBar />
+      <AppHeader/>
+      <DocumentsHeader />
       
       <main className="flex-1 max-w-7xl w-full mx-auto px-6 py-8 overflow-hidden">
         <div className="flex flex-col lg:flex-row gap-8 h-full">
