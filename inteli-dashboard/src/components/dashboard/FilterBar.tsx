@@ -1,9 +1,15 @@
 import { useState } from "react";
 import { Filter, BarChart3, FileText, Settings, Calendar, ChevronUp, ChevronDown } from "lucide-react";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { useNavigate, useLocation } from "react-router-dom";
 
 const FilterBar = () => {
   const [isExpanded, setIsExpanded] = useState(true);
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  // Função auxiliar para verificar se o botão deve estar ativo (roxo)
+  const isActive = (path: string) => location.pathname === path;
 
   return (
     <div className="bg-[#3C3255]">
@@ -24,14 +30,43 @@ const FilterBar = () => {
           </button>
           
           <div className="flex items-center gap-3">
-            <button className="p-2 hover:bg-primary/20 rounded-md transition-colors">
-              <BarChart3 className="w-5 h-5 text-primary" />
+            {/* Botão Dashboard (Home) */}
+            <button 
+              onClick={() => navigate("/")}
+              className={`p-2 rounded-md transition-colors ${
+                isActive('/') 
+                  ? 'bg-primary/20 text-primary-foreground' // Estilo Ativo
+                  : 'text-primary-foreground/70 hover:bg-primary/10' // Estilo Inativo
+              }`}
+              title="Dashboard"
+            >
+              <BarChart3 className={`w-5 h-5 ${isActive('/') ? 'text-primary' : 'text-current'}`} />
             </button>
-            <button className="p-2 hover:bg-primary/20 rounded-md transition-colors">
-              <FileText className="w-5 h-5 text-primary-foreground/70" />
+
+            {/* Botão Documentos -> Redireciona para /documents */}
+            <button 
+              onClick={() => navigate("/documents")}
+              className={`p-2 rounded-md transition-colors ${
+                isActive('/documents') 
+                  ? 'bg-primary/20 text-primary-foreground' 
+                  : 'text-primary-foreground/70 hover:bg-primary/10'
+              }`}
+              title="Gestão de Documentos"
+            >
+              <FileText className={`w-5 h-5 ${isActive('/documents') ? 'text-primary' : 'text-current'}`} />
             </button>
-            <button className="p-2 hover:bg-primary/20 rounded-md transition-colors">
-              <Settings className="w-5 h-5 text-primary-foreground/70" />
+
+            {/* Botão Usuários -> Redireciona para /users */}
+            <button 
+              onClick={() => navigate("/users")}
+              className={`p-2 rounded-md transition-colors ${
+                isActive('/users') 
+                  ? 'bg-primary/20 text-primary-foreground' 
+                  : 'text-primary-foreground/70 hover:bg-primary/10'
+              }`}
+              title="Gestão de Usuários"
+            >
+              <Settings className={`w-5 h-5 ${isActive('/users') ? 'text-primary' : 'text-current'}`} />
             </button>
           </div>
         </div>
