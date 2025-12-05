@@ -1,5 +1,5 @@
+import AppHeader from "@/components/AppHeader";
 import DashboardHeader from "@/components/dashboard/DashboardHeader";
-import FilterBar from "@/components/dashboard/FilterBar";
 import AlertsLineChart from "@/components/dashboard/AlertsLineChart";
 import TopicsBarChart from "@/components/dashboard/TopicsBarChart";
 import ToursLineChart from "@/components/dashboard/ToursLineChart";
@@ -9,8 +9,8 @@ import VisitorsProfileChart from "@/components/dashboard/VisitorsProfileChart";
 const Index = () => {
   return (
     <div className="h-screen bg-background flex flex-col overflow-hidden">
+      <AppHeader />
       <DashboardHeader />
-      <FilterBar />
       
       {/* ALTERAÇÃO: Removido 'lg:overflow-hidden' e adicionado 'overflow-y-auto' para permitir scroll sempre que necessário */}
       <main className="flex-1 w-full overflow-y-auto">
