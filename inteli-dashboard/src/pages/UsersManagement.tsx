@@ -1,6 +1,6 @@
 import { useState } from "react";
-import DashboardHeader from "@/components/dashboard/DashboardHeader";
-import FilterBar from "@/components/dashboard/FilterBar";
+import AppHeader from "@/components/AppHeader";
+import UserHeader from "@/components/user-management/UserHeader";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
@@ -30,8 +30,8 @@ const UsersManagement = () => {
 
   return (
     <div className="h-screen bg-background flex flex-col overflow-hidden">
-      <DashboardHeader title="Gestão de usuários" />
-      <FilterBar />
+      <AppHeader/>
+      <UserHeader />
       
       <main className="flex-1 max-w-7xl w-full mx-auto px-8 py-8 overflow-auto">
         <div className="relative flex flex-col gap-6">
