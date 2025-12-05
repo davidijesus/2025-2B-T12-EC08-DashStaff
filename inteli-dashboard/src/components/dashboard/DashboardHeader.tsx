@@ -3,6 +3,7 @@ import inteliLogo from "@/assets/inteli-logo.png";
 interface DashboardHeaderProps {
   title?: string;
 }
+
 const DashboardHeader = ({ title = "Acompanhamento Geral" }: DashboardHeaderProps) => {
   return (
     <header className="bg-[#2E2640] px-8 py-6">

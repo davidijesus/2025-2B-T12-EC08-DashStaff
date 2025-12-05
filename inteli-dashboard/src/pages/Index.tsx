@@ -12,21 +12,29 @@ const Index = () => {
       <DashboardHeader />
       <FilterBar />
       
-      <main className="flex-1 max-w-[1400px] w-full mx-auto px-6 py-3 overflow-auto lg:overflow-hidden">
-        <div className="flex flex-col lg:flex-row gap-4 h-full">
-          {/* Coluna principal - 4 charts */}
-          <div className="lg:w-2/3 grid grid-cols-1 md:grid-cols-2 gap-3 h-full">
-            <AlertsLineChart />
-            <TopicsBarChart />
-            <ToursLineChart />
-            <CheckpointsBarChart />
-          </div>
+      {/* ALTERAÇÃO: Removido 'lg:overflow-hidden' e adicionado 'overflow-y-auto' para permitir scroll sempre que necessário */}
+      <main className="flex-1 w-full overflow-y-auto">
+        <div className="max-w-[1400px] w-full mx-auto px-6 py-6">
           
-          {/* Coluna lateral - Perfil dos visitantes */}
-          <div className="lg:w-1/3 flex flex-col gap-3 h-full">
-            <h2 className="text-sm font-semibold text-foreground shrink-0">Perfil dos visitantes</h2>
-            <div className="flex-1 min-h-0">
-              <VisitorsProfileChart />
+          {/* ALTERAÇÃO: Removido 'h-full' daqui para permitir que o conteúdo cresça e gere scroll */}
+          <div className="flex flex-col lg:flex-row gap-4">
+            
+            {/* Coluna principal - 4 charts */}
+            {/* ALTERAÇÃO: Removido 'h-full' para não forçar o tamanho da tela */}
+            <div className="lg:w-2/3 grid grid-cols-1 md:grid-cols-2 gap-3">
+              <AlertsLineChart />
+              <TopicsBarChart />
+              <ToursLineChart />
+              <CheckpointsBarChart />
+            </div>
+            
+            {/* Coluna lateral - Perfil dos visitantes */}
+            <div className="lg:w-1/3 flex flex-col gap-3">
+              <h2 className="text-sm font-semibold text-foreground shrink-0">Perfil dos visitantes</h2>
+              {/* Adicionado min-h para garantir que o gráfico tenha altura mesmo sem o h-full do pai */}
+              <div className="min-h-[400px] lg:h-auto">
+                <VisitorsProfileChart />
+              </div>
             </div>
           </div>
         </div>
